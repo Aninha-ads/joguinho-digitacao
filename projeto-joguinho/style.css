@@ -86,5 +86,141 @@ body.default {
 }
 
 /* ---------------------------------------------------
-   Game
+   GAME
 --------------------------------------------------- */
+
+/* HUD (placar) */
+.hud {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    display: flex;
+    gap: 30px;
+}
+
+.placar {
+    padding: 12px 20px;
+    border-radius: 12px;
+
+    font-size: 20px;
+    font-weight: bold;
+    color: #dfffff;
+    text-align: center;
+
+    background: rgba(0, 255, 255, 0.08);
+    border: 2px solid #b134ff;
+    box-shadow: 0 0 15px #b134ff;
+}
+
+.placar span {
+    font-size: 26px;
+}
+
+/* Container onde o texto vai subir */
+
+
+/* Texto interno do teleprompter */
+#texto {
+    position: absolute;
+    width: 90%;
+    left: 5%;
+    top: 100%; /* Começa fora do container */
+}
+
+/*limitar texto ao bloco*/
+.container-texto {
+    width: 800px;
+    height: 500px;
+    margin: auto;
+    top: 280px;
+
+    overflow: hidden; /* IMPORTANTE */
+    position: relative;
+
+    background: rgba(90, 0, 140,0.38);
+    border: 2px solid #b134ff;
+    box-shadow: 
+        0 0 20px #c300ff,
+        0 0 40px #b134ff,
+        inset 0 0 25px rgba(255, 0, 255, 0.3);
+    border-radius: 12px;
+}
+
+.texto-box {
+    position: absolute; /* permite animar a subida */
+    width: 100%;
+    font-size: 20px;
+    line-height: 28px;
+    padding: 20px;
+    white-space: pre-wrap; /* mantém as quebras de linha */
+    color: antiquewhite;
+
+}
+
+
+/*menu flutuante - dificuldades */
+
+/* background */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(3px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; 
+}
+
+/* caixa central */
+.menu-box {
+    background: rgba(0, 255, 255, 0.08);
+    padding: 25px 35px;
+    border-radius: 15px;
+    border: 2px solid #b134ff;
+    box-shadow: 0 0 20px #b134ff;
+    color: white;
+    text-align: center;
+    width: 380px;
+}
+
+/* título */
+.menu-box h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    text-shadow: 0 0 10px #b134ff;
+}
+
+/* opções */
+.opcoes label {
+    display: block;
+    margin: 10px 0;
+    font-size: 20px;
+    cursor: pointer;
+    text-shadow: 0 0 8px #b134ff;
+}
+
+/* Play */
+#btn-jogar {
+    margin-top: 15px;
+    padding: 10px 25px;
+    font-size: 22px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+
+    color: #001f29;
+    background: #b134ff;
+    box-shadow: 0 0 15px #b134ff;
+    transition: 0.2s;
+}
+
+#btn-jogar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #b134ff;
+
+/*fim do menu flutuante*/
+}

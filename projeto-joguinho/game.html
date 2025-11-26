@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Digitação</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="default">
+    <div id="menu-dificuldade" class="menu-overlay">
+
+        <div class="menu-box">
+            <h2>Selecione a Dificuldade</h2>
+
+            <div class="opcoes">
+                <label><input type="radio" name="dificuldade" value="1" checked> Muito Fácil</label>
+                <label><input type="radio" name="dificuldade" value="2"> Fácil</label>
+                <label><input type="radio" name="dificuldade" value="3"> Normal</label>
+                <label><input type="radio" name="dificuldade" value="4"> Difícil</label>
+                <label><input type="radio" name="dificuldade" value="5"> Hardcore</label>
+            </div>
+
+            <button id="btn-jogar">JOGAR</button>
+        </div>
+
+    </div>
+
+    <div class="hud">
+        <div class="placar">PONTOS <br><span>1250</span></div>
+        <div class="placar">PALAVRAS <br><span>47</span></div>
+    </div>
+
+    <div class="container-texto">
+        <div id="texto" class="texto-box">
+        Carregando texto...
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
