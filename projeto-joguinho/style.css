@@ -1,0 +1,90 @@
+/* ---------------------------------------------------
+   Geral
+--------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fonte global */
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    font-family: "Segoe UI", Arial, sans-serif;
+
+    /* Fundo padrão (pode ser trocado depois no menu/jogo via classe) */
+    background-size: cover;
+    background-position: center;
+}
+
+/* ---------------------------------------------------
+   Backgrounds
+--------------------------------------------------- */
+body.default {
+    background-image: url("img/background.jpg");
+}
+
+/* ---------------------------------------------------
+   Menu inicial
+--------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap'); /*fonte do título*/
+
+.title {
+    font-family: 'Goldman', sans-serif;
+    color: #c9a0ff;
+    font-size: 161px;
+    font-weight: 400;
+
+    position: absolute;
+    left: 120px;
+    top: 220px;
+
+    line-height: 1;
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+.menu-buttons {
+    position: absolute;
+    top: 250px;
+    right: 150px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.button {
+    text-decoration: none;
+    background-color: #382A52;
+    color: #E2E2E2;
+    font-size: 40px;
+    padding: 25px 60px;
+    border-radius: 30px;
+
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.6);
+    transition: 0.3s;
+}
+
+.button:hover {
+    transform: scale(1.05);
+    background: rgba(80, 70, 120, 0.9);
+}
+
+.user-button {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+}
+
+.user-button img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* ---------------------------------------------------
+   Game
+--------------------------------------------------- */
