@@ -55,36 +55,60 @@ disconnect_db($conn);
 <head>
     <meta charset="utf-8">
     <title>Trocar Senha</title>
+    <link rel="stylesheet" href="../../style.css">
 </head>
-<body>
 
-<h1>Trocar Senha</h1>
+<body class="form-page">
 
-<?php if ($success): ?>
-    <p style="color:green;">Senha alterada com sucesso!</p>
-<?php endif; ?>
+<div class="form-shape-top"></div>
+<div class="form-shape-bottom"></div>
 
-<?php if ($error): ?>
-    <p style="color:red;">Erro: <?= htmlspecialchars($msg) ?></p>
-<?php endif; ?>
+<h1 class="form-title">Trocar Senha</h1>
 
-<form method="POST" action="">
-    <label>Senha atual:</label><br>
-    <input type="password" name="current_password" required><br><br>
+<div class="form-container">
 
-    <label>Nova senha:</label><br>
-    <input type="password" name="new_password" required><br><br>
+    <?php if ($success): ?>
+        <p style="color:green; font-size:22px;">Senha alterada com sucesso!</p>
+        <button class="form-button" onclick="location.href='perfil.php'">Voltar ao Perfil</button>
+    <?php endif; ?>
 
-    <label>Confirmar nova senha:</label><br>
-    <input type="password" name="confirm_password" required><br><br>
+    <?php if ($error): ?>
+        <p style="color:red; font-size:22px;"><?= htmlspecialchars($msg) ?></p>
+    <?php endif; ?>
 
-    <button type="submit">Trocar senha</button>
-</form>
+    <?php if (!$success): ?>
+    <form method="POST">
 
-<br>
-<a href="perfil.php">Voltar</a>
+        <div class="form-grid">
+
+            <div class="form-group">
+                <label>Senha atual</label>
+                <input type="password" name="current_password" required>
+            </div>
+
+            <div class="form-group">
+                <label>Nova senha</label>
+                <input type="password" name="new_password" required>
+            </div>
+
+            <div class="form-group">
+                <label>Confirmar nova senha</label>
+                <input type="password" name="confirm_password" required>
+            </div>
+
+        </div>
+
+        <button type="submit" class="form-button">Salvar nova senha</button>
+    </form>
+
+    <button class="form-button" style="background:#382A52; margin-top:20px"
+        onclick="location.href='perfil.php'">Voltar</button>
+    <?php endif; ?>
+
+</div>
 
 </body>
 </html>
 
+<?php
 

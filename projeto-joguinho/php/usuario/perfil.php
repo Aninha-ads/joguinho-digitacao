@@ -16,39 +16,37 @@ mysqli_stmt_close($stmt);
 
 disconnect_db($conn);
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <title>Meu Perfil</title>
-    <style>
-        body {
-            font-family: Arial;
-            padding: 20px;
-        }
-        .btn {
-            display: inline-block;
-            padding: 10px 16px;
-            background: #6c4dad;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            margin: 6px;
-        }
-    </style>
+    <link rel="stylesheet" href="../../style.css">
 </head>
-<body>
 
-<h1>Perfil do Usuário</h1>
+<body class="form-page">
 
-<p><strong>Nome:</strong> <?= htmlspecialchars($user["name"]) ?></p>
-<p><strong>Email:</strong> <?= htmlspecialchars($user["email"]) ?></p>
+<div class="form-shape-top"></div>
+<div class="form-shape-bottom"></div>
 
-<hr>
+<h1 class="form-title">Meu Perfil</h1>
 
-<a href="edit_perfil.php" class="btn">Editar Perfil</a>
-<a href="change_pass.php" class="btn">Trocar Senha</a>
-<a href="../../menu.html" class="btn">Voltar ao Menu</a>
+<div class="form-container">
+
+    <div class="profile-info">
+        <p><strong>Nome:</strong> <?= htmlspecialchars($user["name"]) ?></p>
+        <p><strong>Email:</strong> <?= htmlspecialchars($user["email"]) ?></p>
+    </div>
+
+    <div class="profile-buttons">
+        <button onclick="location.href='edit_perfil.php'">Editar Perfil</button>
+        <button onclick="location.href='change_pass.php'">Trocar Senha</button>
+        <button onclick="location.href='../login/logout.php'">Sair</button>
+        <button onclick="location.href='../../menu.html'">Voltar ao Menu</button>
+    </div>
+
+</div>
 
 </body>
 </html>
