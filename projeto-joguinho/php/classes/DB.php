@@ -8,7 +8,7 @@ class DB {
     private static $instance = null;
     private $conn;
 
-    prinvate function __construct() {
+    private function __construct() {
         try {
             $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4";
             $this->conn = new PDO($dsn, DB_USER, DB_PASS);
