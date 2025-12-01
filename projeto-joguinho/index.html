@@ -1,29 +1,33 @@
+<<<<<<< HEAD:projeto-joguinho/views/index.html
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Joguinho!!</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joguinho!!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-    <body>
-        <div class="container">
+<body>
+    <div class="container">
         <h1>Isso é um joguinho de Digitar!</h1>
 
+        <!-- Login real -->
+        <div id="login-screen">
+            <form action="login.php" method="POST">
+                <input type="text" name="login" placeholder="Digite seu login" required>
+                <input type="password" name="senha" placeholder="Digite sua senha" required>
+                <button type="submit" name="entrar">Entrar</button>
+            </form>
+        </div>
 
-    <!--Parte que o usuário faz o login para salvar a pontuação-->
-    <div id="login-screen">
-        <input type="text" id="username" placeholder="Digite seu username">
-        <button id="login-btn">Entrar</button>
-    </div> 
-
-    <!--Tabela do jogo (início)-->
-    <div id="screen" class="hiden"> </div>
+        <!-- Jogo -->
+        <div id="screen" class="hidden"></div>
 
         <p>Bem-vindo(a) ao jogo de digitação. Será que você tem habilidade de digitar rapidamente?</p>
-        
-        <div className="letras"> </div>
-        </div>
-    </body>
+
+        <div class="letras"></div>
+    </div>
+</body>
 </html>
+
