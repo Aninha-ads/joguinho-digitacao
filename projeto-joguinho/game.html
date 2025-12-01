@@ -26,13 +26,36 @@
     </div>
 
     <div class="hud">
-        <div class="placar">PONTOS <br><span>1250</span></div>
-        <div class="placar">PALAVRAS <br><span>47</span></div>
+        <div class="placar">PONTOS <br><span>0</span></div>
+        <div class="placar">PALAVRAS <br><span>0</span></div>
     </div>
 
+    <div id="combo-hud">
+            <div id="combo-label">COMBO</div>
+            <div id="combo-mult">x1</div>
+        </div>
+
     <div class="container-texto">
-        <div id="texto" class="texto-box">
-        Carregando texto...
+        <div id="box">
+            <div id="texto" class="texto-box"></div>
+            <div id="digitado" class="texto-box digitado"></div>
+        </div>
+    </div>
+    
+    <div class="gameover-overlay" id="gameover-overlay">
+        <div class="gameover-box">
+
+            <h2>FIM DE JOGO</h2>
+
+            <p class="go-score">Pontos: <span id="go-pontos">0</span></p>
+            <p class="go-score">Palavras: <span id="go-palavras">0</span></p>
+    
+            <div class="go-buttons">
+                <button onclick="reiniciarJogo()">Jogar novamente</button>
+                <button onclick="window.location='historico.php'">Jogos anteriores</button>
+                <button onclick="window.location='ranking.php'">Ranking</button>
+            </div>
+
         </div>
     </div>
 
