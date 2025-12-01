@@ -44,35 +44,58 @@ mysqli_stmt_close($stmt);
 
 disconnect_db($conn);
 ?>
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="utf-8">
     <title>Editar Perfil</title>
+    <link rel="stylesheet" href="../../style.css">
 </head>
-<body>
-<h1>Editar Perfil</h1>
 
-<?php if ($success): ?>
-    <p style="color:green;">Dados atualizados com sucesso!</p>
-<?php endif; ?>
+<body class="form-page">
 
-<?php if ($error): ?>
-    <p style="color:red;">Erro: <?= htmlspecialchars($msg) ?></p>
-<?php endif; ?>
+<div class="form-shape-top"></div>
+<div class="form-shape-bottom"></div>
 
-<form method="POST" action="">
-    <label>Nome:</label><br>
-    <input type="text" name="name" value="<?= htmlspecialchars($user['name'] ?? '') ?>" required><br><br>
+<h1 class="form-title">Editar Perfil</h1>
 
-    <label>Email:</label><br>
-    <input type="email" name="email" value="<?= htmlspecialchars($user['email'] ?? '') ?>" required><br><br>
+<div class="form-container">
 
-    <button type="submit">Salvar alterações</button>
-</form>
+    <?php if ($success): ?>
+        <p style="color:green; font-size:22px;">Dados atualizados com sucesso!</p>
+    <?php endif; ?>
 
-<br>
-<a href="perfil.php">Voltar</a>
+    <?php if ($error): ?>
+        <p style="color:red; font-size:22px;"><?= htmlspecialchars($msg) ?></p>
+    <?php endif; ?>
+
+    <form method="POST">
+        <div class="form-grid">
+
+            <div class="form-group">
+                <label>Nome</label>
+                <input type="text" name="name" value="<?= htmlspecialchars($user['name']) ?>" required>
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" value="<?= htmlspecialchars($user['email']) ?>" required>
+            </div>
+
+        </div>
+
+        <button type="submit" class="form-button">Salvar alterações</button>
+    </form>
+
+    <div style="margin-top: 30px;">
+        <button class="form-button" style="background:#382A52;"
+            onclick="location.href='perfil.php'">Voltar ao Perfil</button>
+    </div>
+
+</div>
+
 </body>
 </html>
 
