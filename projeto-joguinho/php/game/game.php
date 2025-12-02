@@ -62,7 +62,7 @@ if (empty($_SESSION["user_id"])) {
             <div class="go-buttons">
                 <button onclick="reiniciarJogo()">Jogar novamente</button>
                 <button onclick="window.location='historico.php'">Jogos anteriores</button>
-                <button onclick="window.location='ranking.php'">Ranking</button>
+                <button onclick="window.location='/php/usuario/ranking.php'">Ranking</button>
             </div>
 
         </div>

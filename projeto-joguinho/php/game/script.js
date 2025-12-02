@@ -348,7 +348,7 @@ function salvarPartida(resultado) {
     });
 
     // Agora sim o fetch correto
-    fetch("/joguinho-digitacao/projeto-joguinho/game/salvar_partida.php", {
+    fetch("salvar_partida.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
