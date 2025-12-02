@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 disconnect_db($conn);
 
-                header("Location: ../../menu.html");
+                header("Location: ../../index.html");
                 exit;
             }
         }
