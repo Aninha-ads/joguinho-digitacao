@@ -1,5 +1,66 @@
 <?php
 session_start();
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>TapType</title>
+</head>
+
+<body class="default">
+
+    <h1 class="title">TapType</h1>
+
+    <!-- Bonequinho: Perfil se logado | Login se não logado -->
+    <?php if (isset($_SESSION['user_id'])): ?>
+        <a href="php/usuario/perfil.php" class="user-button">
+            <img src="img/user.png">
+        </a>
+    <?php else: ?>
+        <a href="php/login/login.php" class="user-button">
+            <img src="img/user.png">
+        </a>
+    <?php endif; ?>
+
+    <div class="menu-buttons">
+        
+        <!-- Jogar só funciona logado -->
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <a href="php/usuario/game.php" class="button">Jogar</a>
+        <?php else: ?>
+            <a href="php/login/login.php" class="button">Jogar</a>
+        <?php endif; ?>
+
+        <a href="php/usuario/ranking.php" class="button">Ranking</a>
+        <a href="php/usuario/ligas.php" class="button">Ligas</a>
+
+        <!-- Se não estiver logado, aparece botão entrar -->
+        <?php if (!isset($_SESSION['user_id'])): ?>
+            <a href="php/login/login.php" class="button">Entrar</a>
+        <?php endif; ?>
+
+    </div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+/*
+session_start();
 
 // Se não estiver logado, vai para login
 if (!isset($_SESSION["user_id"])) {
@@ -30,7 +91,8 @@ if (!isset($_SESSION["user_id"])) {
 </div>
 </body>
 </html>
-
+*/
+?>
 
 
 <?php
