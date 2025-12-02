@@ -200,5 +200,316 @@ form > input[type="password"] {
 
 
 /* ---------------------------------------------------
-   Game
+   GAME
 --------------------------------------------------- */
+
+
+
+  /*Menu flutuante ----------------------------------------------------*/
+
+
+/* background */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(3px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; 
+}
+
+/* caixa central */
+.menu-box {
+    background: rgba(0, 255, 255, 0.08);
+    padding: 25px 35px;
+    border-radius: 15px;
+    border: 2px solid #b134ff;
+    box-shadow: 0 0 20px #b134ff;
+    color: white;
+    text-align: center;
+    width: 380px;
+}
+
+/* título */
+.menu-box h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    text-shadow: 0 0 10px #b134ff;
+}
+
+/* opções */
+.opcoes label {
+    display: block;
+    margin: 10px 0;
+    font-size: 20px;
+    cursor: pointer;
+    text-shadow: 0 0 8px #b134ff;
+}
+
+/* Play */
+#btn-jogar {
+    margin-top: 15px;
+    padding: 10px 25px;
+    font-size: 22px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+
+    color: #001f29;
+    background: #b134ff;
+    box-shadow: 0 0 15px #b134ff;
+    transition: 0.2s;
+}
+
+#btn-jogar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #b134ff;
+
+/*fim do menu flutuante*/
+}
+
+/*JOGO ----------------------------------------------------------------*/
+
+/* HUD (placar) */
+.hud {
+    position: absolute;
+    top: 3vh;
+    right: 3vw;
+
+    display: flex;
+    gap: clamp(15px, 2vw, 30px);
+}
+
+.placar {
+    padding: 12px 20px;
+    border-radius: 12px;
+
+    font-size: 20px;
+    font-weight: bold;
+    color: #dfffff;
+    text-align: center;
+
+    background: rgba(0, 255, 255, 0.08);
+    border: 2px solid #b134ff;
+    box-shadow: 0 0 15px #b134ff;
+}
+
+.placar span {
+    font-size: 26px;
+}
+
+/* Container onde o texto vai subir */
+.container-texto {
+    width: 800px;
+    max-width: 90vw; /* diminui em telas pequenas */
+    height: 500px;
+    max-height: 60vh;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    overflow: hidden;
+
+    background: rgba(90, 0, 140,0.38);
+    border: 2px solid #b134ff;
+    box-shadow:
+        0 0 20px #c300ff,
+        0 0 40px #b134ff,
+        inset 0 0 25px rgba(255, 0, 255, 0.3);
+    border-radius: 12px;
+}
+
+.texto-box {
+    position: absolute; /* permite animar a subida */
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-size: 24px;
+    line-height: 1.25;
+    padding: 20px;
+    white-space: pre-wrap; /* mantém as quebras de linha */
+
+    padding: 20;
+    margin: 0;
+}
+
+
+/* Texto interno do teleprompter */
+#texto, #digitado {
+    position: absolute;
+    top: 100%; /* Começa fora do container */
+    left: 0;
+}
+
+#texto {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    color: antiquewhite;
+}
+
+/* Cada caractere vira um span */
+#texto span {
+    display: inline-block;
+    white-space: pre-wrap;
+}
+
+/* Quebra de linha real */
+#texto span.newline {
+    display: block;
+    height: 1.25em;
+}
+
+/* Pinturas corretas */
+#texto span.correto { color: #2895f3; }   /* roxo */
+#texto span.errado  { color: #ff4444; }   /* vermelho */
+
+/* O DIGITADO FOI REMOVIDO DA LÓGICA (não é mais usado) */
+#digitado { display: none !important; }
+
+/* overlay do digitado — spans inline-block para medição */
+#digitado span {
+    display: inline-block;
+    line-height: 1.25;
+    white-space: pre-wrap;
+}
+
+/* newline no overlay */
+#digitado br {
+    display: block;
+    line-height: 1.25;
+}
+
+/* cores da lógica antiga: colorimos o digitado */
+#digitado span.correto { color: #2895f3; } /* roxo */
+#digitado span.errado  { color: #ff4444; } /* vermelho */
+
+/* placeholders (quando não digitou) invisíveis */
+#digitado :not(span) { color: transparent; }
+
+/* Hud - combo multiplicador ----------------------------------------- */
+
+#combo-hud {
+    position: absolute;
+    left: 18vw;              /* distância lateral dentro do container */
+    top: 15vw;                /* centraliza verticalmente no container */
+    transform: translateY(-50%) rotate(-20deg);  /* leve inclinação */
+    text-align: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+    z-index: 60;
+}
+
+#combo-label {
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: 5px;
+    color: #c27cff; /* roxo neon */
+    text-shadow:
+        0 0 8px #c27cff,
+        0 0 18px #b134ff,
+        0 0 28px #b134ff;
+    -webkit-font-smoothing: antialiased;
+}
+
+#combo-mult {
+    margin-top: 8px;
+    font-size: 56px;
+    font-weight: 900;
+    color: #ffb1ff;
+    text-shadow:
+        0 0 10px #ff00ff,
+        0 0 25px #c000ff,
+        0 0 35px #b134ff;
+    transition: transform 0.18s ease, text-shadow 0.18s ease;
+}
+
+/* animação ao aumentar combo */
+.combo-pulse {
+    transform: scale(1.16);
+    text-shadow:
+        0 0 18px #ff00ff,
+        0 0 40px #ff00ff,
+        0 0 60px #ff00ff;
+}
+
+
+/* Game over --------------------------------------------------------- */
+.gameover-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(3px);
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 2000;
+}
+
+/* caixa central */
+.gameover-box {
+    background: rgba(0, 255, 255, 0.08);
+    padding: 35px 50px;
+    border-radius: 18px;
+    border: 3px solid #b134ff;
+    box-shadow:
+        0 0 25px #b134ff,
+        0 0 50px #8a1bff inset;
+
+    width: 420px;
+    text-align: center;
+    color: white;
+    animation: aparecer 0.4s ease-out;
+}
+
+@keyframes aparecer {
+    from { transform: scale(0.6); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+}
+
+.gameover-box h2 {
+    font-size: 38px;
+    margin-bottom: 15px;
+    text-shadow: 0 0 12px #b134ff;
+}
+
+.go-buttons {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.go-buttons button {
+    font-size: 20px;
+    padding: 12px 25px;
+    border-radius: 10px;
+    border: none;
+
+    cursor: pointer;
+    background: #b134ff;
+    color: #05131b;
+    font-weight: 700;
+
+    box-shadow: 0 0 15px #b134ff;
+    transition: 0.25s;
+}
+
+.go-buttons button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #c75bff;
+}
+

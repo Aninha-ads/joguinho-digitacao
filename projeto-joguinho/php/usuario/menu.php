@@ -3,7 +3,7 @@ session_start();
 
 // Se o usuário não estiver logado, redireciona
 if (!isset($_SESSION['login'])) {
-    header("Location: login.php");
+    header("Location: ../login/login.php");
     exit;
 }
 
@@ -32,7 +32,7 @@ $usuario = htmlspecialchars($_SESSION['login']);
         </a>
 
         <div class="menu-buttons">
-            <a href="game.php" class="button">Jogar</a>
+            <a href="../game/game.php" class="button">Jogar</a>
             <a href="ranking.php" class="button">Ranking</a>
             <a href="ligas.php" class="button">Ligas</a>
         </div>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "../login/functions.php";
+require "functions.php";
 
 $error = "";
 
@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 disconnect_db($conn);
 
-                header("Location: ../../index.html");
+                header("Location: ../../index.php");
                 exit;
             }
         }
