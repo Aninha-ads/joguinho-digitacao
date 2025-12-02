@@ -8,7 +8,7 @@ if (!$conn) {
 
 echo "Conectado ao MySQL!<br>";
 
-$sql = "CREATE DATABASE IF NOT EXISTS $dbname"
+$sql = "CREATE DATABASE IF NOT EXISTS $dbname";
 if (mysqli_query($conn, $sql)) {
     echo "Banco '$dbname' criando ou já existente. <br>";
 } else {
@@ -34,9 +34,43 @@ if(mysqli_query($conn,$sql)) {
     echo "Erro criando tabelas: " . mysqli_error($conn);
 }
 
+//tabela de textos do jogo
+$sql_textos = "CREATE TABLE IF NOT EXISTS textos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    conteudo TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
+
+if (mysqli_query($conn, $sql_textos)) {
+    echo "Tabela 'textos' criada.<br>";
+} else {
+    echo "Erro criando tabela 'textos': " . mysqli_error($conn) . "<br>";
+}
+
+// tabela de partidas
+$sql_partidas = "CREATE TABLE IF NOT EXISTS partidas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NULL,
+    user_name VARCHAR(150) DEFAULT 'anonimo',
+
+    pontos INT NOT NULL DEFAULT 0,
+    palavras INT NOT NULL DEFAULT 0,
+    dificuldade VARCHAR(20) DEFAULT NULL,
+    resultado VARCHAR(20) DEFAULT NULL,
+    data_jogo TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    INDEX(user_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
+
+if (mysqli_query($conn, $sql_partidas)) {
+    echo "Tabela 'partidas' criada.<br>";
+} else {
+    echo "Erro criando tabela 'partidas': " . mysqli_error($conn) . "<br>";
+}
+
+
 mysqli_close($conn);
 
-echo "<br><b>Tudo pronto!</br>";
+echo "<br><b>Tudo pronto! Tabelas criadas com sucesso (mysqli)</br>";
 
 
 ?>

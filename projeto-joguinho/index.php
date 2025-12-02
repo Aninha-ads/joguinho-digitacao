@@ -29,7 +29,7 @@ session_start();
         
         <!-- Jogar só funciona logado -->
         <?php if (isset($_SESSION['user_id'])): ?>
-            <a href="php/usuario/game.php" class="button">Jogar</a>
+            <a href="php/game/game.php" class="button">Jogar</a>
         <?php else: ?>
             <a href="php/login/login.php" class="button">Jogar</a>
         <?php endif; ?>

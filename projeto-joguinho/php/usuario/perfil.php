@@ -43,7 +43,7 @@ disconnect_db($conn);
         <button onclick="location.href='edit_perfil.php'">Editar Perfil</button>
         <button onclick="location.href='change_pass.php'">Trocar Senha</button>
         <button onclick="location.href='../login/logout.php'">Sair</button>
-        <button onclick="location.href='../../menu.html'">Voltar ao Menu</button>
+        <button onclick="location.href='../../index.php'">Voltar ao Menu</button>
     </div>
 
 </div>
