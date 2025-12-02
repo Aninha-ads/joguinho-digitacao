@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require __DIR__ . "../login/credentials.php";
+require __DIR__ . "/../login/credentials.php";
 
 header("Content-Type: application/json; charset=utf-8");
 
