@@ -38,6 +38,12 @@ Breve descrição do sistema, explicando seu objetivo e funcionamento geral.
 - ... Alterar a senha
 - ... Ranking de pontuações
 
+- ... Mostrar ranking geral e semanal de todos os jogadores.
+- ... Menu principal das ligas.
+- ... criar uma liga com nome e palavra-chave.
+- ... entrar em uma liga existente via ID + palavra-chave.
+- ... Lista todas as ligas que o usuário participa.
+
 
 
 ## || Tecnologias Utilizadas
@@ -65,7 +71,8 @@ Breve descrição do sistema, explicando seu objetivo e funcionamento geral.
 -- pasta de usuário: change_pass, edit_perfil, menu, perfil 
 
 - Ana Clara Rozin:
--- de ranking, ligas
+-- pasta ligas: ligas, criar_liga, entrar_liga, minhas_ligas, ranking_ligas, relatorio_partidas
+-- ranking
 
 - Mariana Zaleski E..
 -- pasta game: carregar_textos, game, gerenciar_textos, partidas_anteriores, partidas, salvar_partida, script.js, style.css, 
