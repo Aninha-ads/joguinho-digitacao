@@ -89,7 +89,7 @@ Breve descrição do sistema, explicando seu objetivo e funcionamento geral.
 6.Problemas com caracteres especiais (Enter, acentos, etc.)
  O ENTER não funcionava porque no código existia uma lógica para bloquear teclas especiais, como: F1, Shift, Alt, Ctrl, Enter, CapsLock. Isso estava dentro da função que tratava keydown, como if (teclaEspecial) return;
    Dessa forma, o Enter era ignorado, o que quebrou o jogo quando o texto aleatório continha quebras de linha
-   Esse problemas foram resolvidos com a alteração da função keuy down e ajustes feitos com ajuda da IA para corrigir a função de captura.
+   Esse problemas foram resolvidos com a alteração da função keydown e ajustes feitos com ajuda da IA para corrigir a função de captura.
 
 7. Integração com Login e Sessão
   Antes de salvar partidas, era necessário impedir que jogadores não logados jogassem, para isso o jogador precisava ser direcionado para login.php. Então, adicionei verificação no topo de game.php:
