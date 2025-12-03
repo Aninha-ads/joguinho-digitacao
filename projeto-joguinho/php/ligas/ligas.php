@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION["user_id"])) {
-    header("Location: index.php");
+    header("Location: ../login/login.php");
     exit;
 }
 ?>
@@ -9,7 +9,7 @@ if (!isset($_SESSION["user_id"])) {
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../../style.css">
 <title>Ligas</title>
 </head>
 <body class="default">

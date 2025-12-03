@@ -17,7 +17,8 @@ $msg = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $liga_id = (int)$_POST["liga"];
-    $chave = trim($_POST["chave"]);
+    $chave = $_POST["chave"] ?? "";
+
 
     // Obter liga
     $stmt = $pdo->prepare("SELECT * FROM ligas WHERE id = ?");
@@ -26,12 +27,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if (!$liga) {
         $msg = "Liga não encontrada.";
-    } elseif (!password_verify($chave, $liga["chave"])) {
+    } elseif (!password_verify($chave, $liga["palavra_chave"])) {
         $msg = "Palavra-chave incorreta.";
     } else {
         // Registrar usuário
         $pdo->prepare("
-            INSERT IGNORE INTO ligas_usuarios (liga_id, user_id)
+            INSERT IGNORE INTO usuarios_ligas (liga_id, user_id)
             VALUES (?, ?)
         ")->execute([$liga_id, $_SESSION["user_id"]]);
 
@@ -46,6 +47,7 @@ $ligas = $pdo->query("SELECT * FROM ligas ORDER BY nome")->fetchAll();
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="../../css/ligas.css">
 <title>Entrar na Liga</title>
 </head>
 <body>
@@ -67,6 +69,9 @@ $ligas = $pdo->query("SELECT * FROM ligas ORDER BY nome")->fetchAll();
 </form>
 
 <p><?= $msg ?></p>
+
+<a href="ligas.php" class="button">Voltar</a>
+
 
 </body>
 </html>

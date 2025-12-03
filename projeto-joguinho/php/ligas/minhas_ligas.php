@@ -29,7 +29,7 @@ try {
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../../style.css">
+<link rel="stylesheet" href="../../css/ligas.css">
 <title>Minhas Ligas</title>
 </head>
 <body class="default">
