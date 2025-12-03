@@ -68,22 +68,18 @@ O uso de IA foi permitido para as seguintes finalidades:
 ### Interação 3
 
 - **Data:** 30/11/2025
-- **Etapa do Projeto:** Jogo. 2 - implementação da lógica inicial com JavaScript
+- **Etapa do Projeto:** Jogo. 8 - Salvamento das partidas
 - **Ferramenta de IA Utilizada:** Chatgpt
-- **Objetivo da Consulta:** Corrigir bug de captura de texto
+- **Objetivo da Consulta:** Corrigir bugs de salvamento
 - 
 - **Prompt(s) Utilizado(s):
-- Os caracteres especiais não funcionam, o enter não funciona e alguns caracteres digitados aparecem diferentes do texto original. Ajuste a lógica do keydown para capturar corretamente o que o jogador digita [parte do código com erro].
+ As partidas não estão salvando, o JSON retorna erro com Unexpected token '<', e o PHP está retornando HTML em vez de JSON. Precisamos corrigir o salvamento e integrar com o sistema de login [parte do código com erro].
 - 
 - **Resumo da Resposta da IA:** A IA explicou que:
-   ev.key.length > 1 estava bloqueando ENTER, acentos e caracteres especiais;
-   o jogo comparava caracteres acentuados sem normalização Unicode;
-   ENTER precisava ser aceito apenas quando o texto original tinha \n;
-   teclas especiais eram tratadas de forma incorreta (Shift, Ctrl, Alt, arrows);
-   Ela forneceu uma nova função de keydown completa, com suporte a Backspace, suporte a Enter corretamente, aceitação apenas de caracteres imprimíveis, comparação usando spans e prevenção de caracteres fora de posição.
+  A IA indicou que o problema vinha da falta de JSON válido na resposta e da presença de HTML no retorno. Recomendou remover qualquer echo antes do json_encode, corrigir o caminho do credentials.php, padronizar o fetch para enviar somente JSON válido e ajustar a verificação de sessão antes de salvar a partida. Também sugeriu ativar logs internos no PHP para ver exatamente o JSON recebido, padronizar o nome das colunas (user_id, user_name) e corrigir o método de envio no JavaScript para não usar variáveis inexistentes.
   
 - **Análise e Aplicação:**
--  A etapa de captura de teclado, a IA sugeriu uma reorganização completa do keydown para corrigir falhas no Enter, caracteres especiais e contagem de palavras. Porém, a solução inicial não encaixava totalmente no meu jogo. Por isso, eu mesma ajustei o código, reestruturando o tratamento de teclas, refinando a filtragem de caracteres especiais e corrigindo a interação entre digitação, comparação e renderização. Também adaptei a lógica para acertos, erros, novas linhas, pontuação e detecção de palavras. Com essas modificações, a captura de texto passou a funcionar corretamente e de forma integrada ao restante do sistema.
-- **Referência no Código:** A lógica inspirada por esta interação foi implementada no arquivo `script.php`, especificamente na parte em há a função `keydown()` , por volta da linha 213.
+-  Com base nessas orientações, revisei todo o fluxo de salvamento. Corrigi os caminhos relativos no PHP usando o diretório real, removi qualquer saída antes do JSON final, implementei logs para depuração, ajustei as colunas da tabela para user_id e user_name, e reescrevi o fetch no JavaScript para garantir que o JSON fosse enviado corretamente. Também atualizei o game.php para impedir o salvamento quando o usuário não estiver logado, redirecionando automaticamente para a tela de login. Depois dessas alterações, o salvamento passou a responder apenas JSON válido, e as partidas começaram a ser registradas corretamente no banco de dados.
+- **Referência no Código:** A lógica inspirada por esta interação foi implementada no arquivo `script.php`, especificamente em `fetch()` dentro da funçao `salvarPartida`, na função `mostrarGameOver(tipo)` por volta das linhas 339 e 311, no arquivo `salvar_partida.php` por volta da linha 4.
 
 ---
