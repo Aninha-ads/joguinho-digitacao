@@ -146,27 +146,36 @@ E o front-end loga a resposta no console.
 - MySQL
 
 
-## || Como Executar - não sei se é assim mesmo
+## || Como Executar 
 1. Clone este repositório  
-2. Importe o banco (`database.sql`)  
+2. Importe o banco executando o arquivo 'bdTables.php'  
 3. Configure `credentials.php`  
 4. Inicie o servidor local  
 5. Acesse no navegador: `http://localhost/...`
+6. execute o `index.php`
+7. vá em login e clique em criar conta
+8. após isso, volte ao menu e clique em jogar
+9. Aproveite o jogo
 
 ## || Estrutura do Banco de Dados (fazer)
-(Coloque o diagrama ou explique as tabelas.)
+<img width="1838" height="574" alt="image" src="https://github.com/user-attachments/assets/657d45d5-7d86-436e-a61b-d6d3205cf078" />
 
-## || Telas do Sistema (fazer)
-(Se quiser, adicione imagens.)
 
 ## || Autores
 
 - Ana Clara Jarbas Cotta Dos Santos:
--- pasta login: credentials, autheticate, dbTables, functions, logout, user_register, user_list. 
--- pasta de usuário: change_pass, edit_perfil, menu, perfil 
+-- ... pasta login: credentials, autheticate, dbTables, functions, logout, user_register, user_list. 
+-- ... pasta de usuário: change_pass, edit_perfil, menu, perfil 
 
 - Ana Clara Rozin:
--- de ranking, ligas
+- ... Mostrar ranking geral e semanal de todos os jogadores.
+- ... Menu principal das ligas.
+- ... criar uma liga com nome e palavra-chave.
+- ... entrar em uma liga existente via ID + palavra-chave.
+- ... Lista todas as ligas que o usuário participa.
+
 
 - Mariana Zaleski E..
--- pasta game: carregar_textos, game, gerenciar_textos, partidas_anteriores, partidas, salvar_partida, script.js, style.css, 
+-- ... pasta game: carregar_textos, game, gerenciar_textos, partidas_anteriores, partidas, salvar_partida, script.js,
+-- ... style.css, style_ligas.css.
+  
