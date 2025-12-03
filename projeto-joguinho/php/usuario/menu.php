@@ -34,7 +34,7 @@ $usuario = htmlspecialchars($_SESSION['login']);
         <div class="menu-buttons">
             <a href="../game/game.php" class="button">Jogar</a>
             <a href="ranking.php" class="button">Ranking</a>
-            <a href="ligas.php" class="button">Ligas</a>
+            <a href="../ligas/ligas.php" class="button">Ligas</a>
         </div>
 
         <a class="logout" href="logout.php">Sair</a>

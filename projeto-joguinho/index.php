@@ -35,7 +35,7 @@ session_start();
         <?php endif; ?>
 
         <a href="php/usuario/ranking.php" class="button">Ranking</a>
-        <a href="php/usuario/ligas.php" class="button">Ligas</a>
+        <a href="php/ligas/ligas.php" class="button">Ligas</a>
 
         <!-- Se não estiver logado, aparece botão entrar -->
         <?php if (!isset($_SESSION['user_id'])): ?>

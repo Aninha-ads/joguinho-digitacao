@@ -68,6 +68,42 @@ if (mysqli_query($conn, $sql_partidas)) {
 }
 
 
+/* parte das ligas */
+
+$sql_ligas = "CREATE TABLE IF NOT EXISTS ligas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(150) NOT NULL,
+    palavra_chave VARCHAR(150) NOT NULL,
+    criador_id INT NOT NULL,
+    criada_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (criador_id) REFERENCES $table_users(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
+
+if (mysqli_query($conn, $sql_ligas)) {
+    echo "Tabela 'ligas' criada.<br>";
+} else {
+   echo "Erro criando tabela 'ligas': " . mysqli_error($conn) . "<br>";
+}
+
+
+
+$sql_ligasUsuario = "CREATE TABLE IF NOT EXISTS usuarios_ligas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    liga_id INT NOT NULL,
+    inscrito_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES $table_users(id),
+    FOREIGN KEY (liga_id) REFERENCES ligas(id),
+    UNIQUE (user_id, liga_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
+
+if (mysqli_query($conn, $sql_ligasUsuario)) {
+    echo "Tabela 'usuarios_ligas' criada.<br>";
+} else {
+    echo "Erro criando tabela 'usuarios_ligas': " . mysqli_error($conn) . "<br>";
+}
+
+
 mysqli_close($conn);
 
 echo "<br><b>Tudo pronto! Tabelas criadas com sucesso (mysqli)</br>";
