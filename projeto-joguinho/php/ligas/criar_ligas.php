@@ -41,10 +41,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../../style.css">
+<link rel="stylesheet" href="style_ligas.css">
 <title>Criar Liga</title>
 </head>
-<body class="default">
+<body class="default ligas">
 <h1 class="title">Criar Liga</h1>
 
 <form method="POST" class="form">

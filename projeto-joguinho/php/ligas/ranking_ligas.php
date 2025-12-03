@@ -49,7 +49,7 @@ try {
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../../style.css">
+<link rel="stylesheet" href="style_ligas.css">
 <title>Ranking da Liga</title>
 </head>
 <body class="default">

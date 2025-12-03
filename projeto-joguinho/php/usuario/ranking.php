@@ -65,7 +65,7 @@ if ($nameCol) {
 }
 
 // montar WHERE para semanal
-$whereWeekly = "p.criado_em >= (NOW() - INTERVAL 7 DAY)";
+$whereWeekly = "p.data_jogo >= (NOW() - INTERVAL 7 DAY)";
 
 if ($period === 'weekly') {
     $sql = "
@@ -76,7 +76,7 @@ if ($period === 'weekly') {
             p.palavras,
             p.dificuldade,
             p.resultado,
-            p.criado_em
+            p.data_jogo AS jogo_data
             {$joinSelectPart}
         FROM partidas p
         LEFT JOIN `{$tableUsers}` u ON u.id = p.user_id
@@ -94,7 +94,7 @@ if ($period === 'weekly') {
             p.palavras,
             p.dificuldade,
             p.resultado,
-            p.criado_em
+            p.data_jogo AS jogo_data
             {$joinSelectPart}
         FROM partidas p
         LEFT JOIN `{$tableUsers}` u ON u.id = p.user_id
@@ -169,7 +169,7 @@ try {
                 $palavras = (int)($row['palavras'] ?? 0);
                 $dif = htmlspecialchars($row['dificuldade'] ?? '-');
                 $res = htmlspecialchars($row['resultado'] ?? '-');
-                $rawDate = $row['criado_em'] ?? null;
+                $rawDate = $row['jogo_data'] ?? null;
                 $dateFmt = $rawDate ? date("d/m/Y H:i", strtotime($rawDate)) : '-';
                 $isMe = ((string)$currentUserId !== '' && (string)$currentUserId === (string)($row['user_id'] ?? ''));
         ?>

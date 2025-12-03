@@ -1,0 +1,134 @@
+body.ligas {
+    margin: 0;
+    padding: 0;
+    font-family: 'Orbitron', sans-serif;
+    background: url("../../img/background.jpg") no-repeat center center fixed;
+    background-size: cover;
+    color: #e6ccff;
+    text-align: center;
+}
+
+/* Overlay escuro + glow */
+body.ligas::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 0, 40, 0.70);
+    backdrop-filter: blur(3px);
+    z-index: -1;
+}
+
+/* Títulos ---------------------------------------------------- */
+body.ligas .title, 
+body.ligas h1, 
+body.ligas h2 {
+    font-size: 2rem;
+    margin-top: 25px;
+    color: #d9b3ff;
+    text-shadow: 0 0 20px #b366ff, 0 0 40px #8000ff;
+}
+
+/* Botões ----------------------------------------------------- */
+
+body.ligas .button,
+body.ligas button,
+body.ligas input[type="submit"],
+body.ligas .liga-btn-voltar {
+    display: block;                 
+    width: 80%;
+    max-width: 350px;
+    margin: 15px auto;
+    padding: 15px 25px;
+
+    background: linear-gradient(135deg, #a64dff, #6600cc);
+    color: white;
+    font-size: 20px;
+    text-align: center;
+
+    border: 2px solid #d699ff;      
+    border-radius: 14px;
+
+    cursor: pointer;
+    text-decoration: none;
+
+    text-shadow: 0 0 10px #ffffff;
+    box-shadow: 0 0 20px #b366ff, 0 0 35px #9900ff;
+
+    transition: 0.2s ease;
+}
+
+body.ligas .button:hover,
+body.ligas button:hover,
+body.ligas input[type="submit"]:hover,
+body.ligas .liga-btn-voltar:hover {
+    transform: scale(1.06);
+    box-shadow: 0 0 30px #e6b3ff, 0 0 60px #bf40ff;
+}
+
+/* Forms -------------------------------------------------------------- */
+body.ligas input,
+body.ligas select {
+    width: 80%;
+    max-width: 350px;
+    padding: 12px;
+    margin: 12px auto;
+
+    border-radius: 10px;
+    border: 2px solid #b366ff;
+    background: rgba(50, 0, 70, 0.6);
+    color: #f0ddff;
+    outline: none;
+
+    display: block;
+    box-shadow: 0 0 12px #9933ff;
+}
+
+body.ligas input:focus,
+body.ligas select:focus {
+    box-shadow: 0 0 20px #cc66ff, 0 0 40px #aa00ff;
+}
+
+/* LISTAS DE LIGAS (Minhas Ligas) --------------------------------------- */
+body.ligas .ligas-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+body.ligas .ligas-list li {
+    background: rgba(100, 0, 150, 0.35);
+    padding: 15px;
+    margin: 12px auto;
+    border-radius: 12px;
+    color: #f8e6ff;
+    width: 80%;
+    max-width: 500px;
+
+    box-shadow: 0 0 15px #a64dff;
+}
+
+
+/* Tabelas -------------------------------------------------------------- */
+body.ligas table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: rgba(50, 0, 80, 0.5);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 20px #aa33ff;
+}
+
+body.ligas th, 
+body.ligas td {
+    padding: 12px;
+    border-bottom: 1px solid #aa55ff;
+}
+
+body.ligas th {
+    background: rgba(120, 0, 180, 0.6);
+    color: #f7e6ff;
+}
+
+body.ligas tr:hover td {
+    background: rgba(180, 0, 255, 0.2);
+}

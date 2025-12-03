@@ -9,10 +9,10 @@ if (!isset($_SESSION["user_id"])) {
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style_ligas.css">
 <title>Ligas</title>
 </head>
-<body class="default">
+<body class="default ligas">
 <h1 class="title">Ligas</h1>
 
 <div class="menu-buttons">

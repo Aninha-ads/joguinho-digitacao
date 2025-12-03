@@ -49,10 +49,11 @@ $ligas = $pdo->query("SELECT * FROM ligas ORDER BY nome")->fetchAll();
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../../css/ligas.css">
+<link rel="stylesheet" href="style_ligas.css">
 <title>Entrar na Liga</title>
 </head>
-<body class="default">
+<body class="default ligas">
+
 
 <h2 class="title">Entrar em uma Liga</h2>
 

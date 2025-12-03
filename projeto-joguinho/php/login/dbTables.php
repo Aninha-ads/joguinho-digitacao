@@ -67,54 +67,13 @@ if (mysqli_query($conn, $sql_partidas)) {
     echo "Erro criando tabela 'partidas': " . mysqli_error($conn) . "<br>";
 }
 
-
 /* parte das ligas */
 
 $sql_ligas = "CREATE TABLE IF NOT EXISTS ligas (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(150) NOT NULL,
     palavra_chave VARCHAR(150) NOT NULL,
-    criador_id INT NOT NULL,
-    criada_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (criador_id) REFERENCES $table_users(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
-
-if (mysqli_query($conn, $sql_ligas)) {
-    echo "Tabela 'ligas' criada.<br>";
-} else {
-   echo "Erro criando tabela 'ligas': " . mysqli_error($conn) . "<br>";
-}
-
-
-
-$sql_ligasUsuario = "CREATE TABLE IF NOT EXISTS usuarios_ligas (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    liga_id INT NOT NULL,
-    inscrito_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES $table_users(id),
-    FOREIGN KEY (liga_id) REFERENCES ligas(id),
-    UNIQUE (user_id, liga_id)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
-
-if (mysqli_query($conn, $sql_ligasUsuario)) {
-    echo "Tabela 'usuarios_ligas' criada.<br>";
-} else {
-    echo "Erro criando tabela 'usuarios_ligas': " . mysqli_error($conn) . "<br>";
-}
-
-
-mysqli_close($conn);
-
-echo "<br><b>Tudo pronto! Tabelas criadas com sucesso (mysqli)</br>";
-
-/* parte das ligas */
-
-$sql_ligas = "CREATE TABLE IF NOT EXISTS ligas (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(150) NOT NULL,
-    palavra_chave VARCHAR(150) NOT NULL,
-    criador_id INT NOT NULL,
+    criador_id INT UNSIGNED NOT NULL,
     criada_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (criador_id) REFERENCES $table_users(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
@@ -127,14 +86,14 @@ if (mysqli_query($conn, $sql_ligas)) {
 
 
 $sql_ligasUsuario = "CREATE TABLE IF NOT EXISTS usuarios_ligas (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    liga_id INT NOT NULL,
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    user_id INT UNSIGNED NOT NULL,
+    liga_id INT UNSIGNED NOT NULL,
     inscrito_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES $table_users(id),
     FOREIGN KEY (liga_id) REFERENCES ligas(id),
     UNIQUE (user_id, liga_id)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
 
 if (mysqli_query($conn, $sql_ligasUsuario)) {
     echo "Tabela 'usuarios_ligas' criada.<br>";
@@ -144,7 +103,17 @@ if (mysqli_query($conn, $sql_ligasUsuario)) {
 
 
 // Insert de textos ----------------------------------------------------------------
-
+$text_count = 0;
+$result = mysqli_query($conn, "SELECT COUNT(*) AS c FROM textos");
+if ($result) {
+    $row = mysqli_fetch_assoc($result);
+    $text_count = isset($row['c']) ? (int)$row['c'] : 0;
+    mysqli_free_result($result);
+} else {
+    // Se der erro na query, opcionalmente logue para debug mas não interrompa
+    error_log("Erro ao contar textos: " . mysqli_error($conn));
+    $text_count = 0; // assume vazia no caso de erro
+}
 
 if ($text_count == 0) {
 

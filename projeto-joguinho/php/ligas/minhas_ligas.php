@@ -29,12 +29,13 @@ try {
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../../style.css">
+<link rel="stylesheet" href="style_ligas.css">
 <title>Minhas Ligas</title>
 </head>
-<body class="default">
+<body class="default ligas">
 <h1 class="title">Minhas Ligas</h1>
 
+<div class="ligas-list">
 <?php if (!$ligas): ?>
 <p>Nenhuma liga encontrada.</p>
 <?php else: ?>
@@ -47,7 +48,9 @@ try {
     <?php endforeach; ?>
 </ul>
 <?php endif; ?>
-
-<a href="ligas.php" class="button">Voltar</a>
+</div>
+    <a href="../usuario/menu.php">
+        <button class="liga-btn-voltar">Voltar</button>
+    </a>
 </body>
 </html>
