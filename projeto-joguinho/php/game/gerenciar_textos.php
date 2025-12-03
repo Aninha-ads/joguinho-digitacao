@@ -6,14 +6,14 @@ $pdo = new PDO("mysql:host=localhost;dbname=jogo_digitacao;charset=utf8mb4", "ro
 
 $mensagem = "";
 
-// ============ ADICIONAR NOVO TEXTO ============
+// Adicionar novo texto -------------------------------------- 
 if (isset($_POST['novo_texto'])) {
     $stmt = $pdo->prepare("INSERT INTO textos (conteudo) VALUES (:txt)");
     $stmt->execute([':txt' => $_POST['novo_texto']]);
     $mensagem = "Novo texto adicionado com sucesso!";
 }
 
-// ============ EDITAR TEXTO EXISTENTE ============
+// Editar texto existente ------------------------------------
 if (isset($_POST['editar_id']) && isset($_POST['editar_texto'])) {
     $stmt = $pdo->prepare("UPDATE textos SET conteudo = :conteudo WHERE id = :id");
     $stmt->execute([
@@ -23,14 +23,14 @@ if (isset($_POST['editar_id']) && isset($_POST['editar_texto'])) {
     $mensagem = "Texto ID {$_POST['editar_id']} atualizado!";
 }
 
-// ============ DELETAR TEXTO ============
+// deletar texto ----------------------------------------------
 if (isset($_POST['delete_id'])) {
     $stmt = $pdo->prepare("DELETE FROM textos WHERE id = :id");
     $stmt->execute([':id' => $_POST['delete_id']]);
     $mensagem = "Texto ID {$_POST['delete_id']} deletado com sucesso!";
 }
 
-// ============ BUSCAR TEXTO PARA EDIÇÃO ============
+// Buscar texto -----------------------------------------------
 $textoEdicao = null;
 if (isset($_GET['editar'])) {
     $stmt = $pdo->prepare("SELECT * FROM textos WHERE id = :id");
@@ -38,7 +38,7 @@ if (isset($_GET['editar'])) {
     $textoEdicao = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-// ============ LISTAR TODOS ============
+// Listar todos ------------------------------------------------
 $stmt = $pdo->query("SELECT id, LEFT(conteudo, 120) AS preview FROM textos ORDER BY id ASC");
 $textos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -75,7 +75,7 @@ $textos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <?php endif; ?>
 
 
-<!-- ========== FORM PARA ADICIONAR NOVO TEXTO ========== -->
+<!-- Form - novo texto -------------------------------------------- -->
 <div class="box">
     <h2>Adicionar Novo Texto</h2>
 
@@ -86,7 +86,7 @@ $textos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </div>
 
 
-<!-- ========== FORM PARA EDITAR TEXTO EXISTENTE ========== -->
+<!-- Form - texto existente -------------------------------------- -->
 <?php if ($textoEdicao): ?>
 <div class="box">
     <h2>Editando Texto ID <?= $textoEdicao['id'] ?></h2>
@@ -100,7 +100,7 @@ $textos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <?php endif; ?>
 
 
-<!-- ========== TABELA DE TEXTOS ========== -->
+<!-- Tabela de texto ---------------------------------------------- -->
 <table>
     <tr>
         <th>ID</th>

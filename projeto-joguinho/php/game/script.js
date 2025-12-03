@@ -23,7 +23,7 @@ let totalPalavras = 0;
 let difficultyMultiplicador = 1.0;
 let dificuldadeSelecionada = "3";
 
-// Mapa de multiplicador por dificuldade (tabela C)
+// Mapa de multiplicador por dificuldade
 const difficultyMap = {
     "1": 0.3, // Muito fácil
     "2": 0.6, // Fácil
@@ -35,7 +35,6 @@ const difficultyMap = {
 // anti-duplica palavras: guardamos índice final (fim) das palavras já contabilizadas
 const palavrasRegistradas = new Set();
 
-// ---------------- utils ----------------
 function escapeHTML(s){
     return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 }
@@ -45,7 +44,7 @@ function charParaHTML(c){
     return escapeHTML(c);
 }
 
-// --------------- HUD de combo ---------------
+// combo --------------------------------------------------
 function atualizarComboHUD(pulse = true) {
     const hud = document.getElementById("combo-hud");
     const multDiv = document.getElementById("combo-mult");
@@ -63,7 +62,7 @@ function atualizarComboHUD(pulse = true) {
     }
 }
 
-// --------------- HUD Pontos/Palavras ---------------
+// Pontos/Palavras -------------------------------------------
 function atualizarHUD() {
     // tenta localizar os spans dentro da HUD direita (se existir)
     const spans = document.querySelectorAll(".hud .placar span");
@@ -73,7 +72,7 @@ function atualizarHUD() {
     }
 }
 
-// --------------- Carregar texto do BD ---------------
+// Carregar texto do BD -------------------------------------------
 function carregarTexto(){
     fetch("carregar_textos.php")
         .then(r => r.json())
@@ -94,7 +93,7 @@ function carregarTexto(){
 }
 carregarTexto();
 
-// --------------- Renderizar texto original (span por span) ---------------
+// Renderizar texto original (span por span) ----------------------
 function atualizarRenderOriginal(){
     const max = textoOriginal.length;
     const parts = [];
@@ -119,7 +118,7 @@ function atualizarRenderOriginal(){
     boxOriginal.innerHTML = parts.join("");
 }
 
-// --------------- Combo functions ---------------
+// Combo functions -----------------------------------------------------------------
 function registrarAcerto() {
     comboAtual++;
     atualizarComboHUD(true);
@@ -139,7 +138,7 @@ function recomputarCombo() {
     atualizarComboHUD(false);
 }
 
-// --------------- Funções de palavra / pontuação ---------------
+// Funções de palavra / pontuação -----------------------------------------------------
 function indiceInicioPalavraPorFim(fimIdx) {
     // fimIdx é índice do último caractere da palavra (não boundary)
     for (let i = fimIdx; i >= 0; i--) {
@@ -201,7 +200,7 @@ function processarPalavraSeNecessario() {
     incrementarPalavras();
 }
 
-// --------------- Atualização única após cada modificação de texto ---------------
+// Atualização única após cada modificação de texto ------------------------------
 function atualizarAposDigitacao() {
     if (gameEnded) return; // não processar se jogo já terminou
     atualizarRenderOriginal();
@@ -210,7 +209,7 @@ function atualizarAposDigitacao() {
     checarVitoria();
 }
 
-// --------------- Keydown handler (limpo) ---------------
+// Keydown handler (limpo) -------------------------------------------------------
 document.addEventListener("keydown", (ev) => {
     if (!textoOriginal || gameEnded) return;
 
@@ -257,7 +256,7 @@ document.addEventListener("keydown", (ev) => {
     atualizarAposDigitacao();
 });
 
-// --------------- Game over / Vitória ---------------
+// Game over / Vitória -----------------------------------------------------------------
 function indiceInicioDaLinha(idx) {
     for (let i = idx; i >= 0; i--) {
         if (textoOriginal[i] === "\n") return i + 1;
@@ -308,7 +307,7 @@ function checarVitoria() {
 }
 
 
-// -------------- interface flutuante - gameover --------------
+// interface flutuante - gameover -------------------------------------------------
 function mostrarGameOver(tipo) {
     gameEnded = true;
 
@@ -336,7 +335,7 @@ function reiniciarJogo() {
     iniciarMovimentoTexto();  // reinicia movimento
 }
 
-//  --------------- salvamento --------------
+// salvamento ------------------------------------------------------------------
 function salvarPartida(resultado) {
 
     // Primeiro o console.log FORA do objeto do fetch
@@ -365,7 +364,7 @@ function salvarPartida(resultado) {
     .catch(err => console.error("Erro na requisição:", err));
 }
 
-// --------------- Movimento do texto e menu ---------------
+// Movimento do texto e menu --------------------------------------------------
 const velocidades = {1:0.1,2:0.3,3:0.5,4:0.9,5:1.2};
 
 if (btnJogar) {
@@ -417,7 +416,7 @@ function iniciarMovimentoTexto(){
     }, 16);
 }
 
-// --------------- Reset visual ---------------
+// Reset visual --------------------------------------------------------------
 function resetJogo() {
     if (movimentoIntervalId) { clearInterval(movimentoIntervalId); movimentoIntervalId = null; }
     textoDigitado = "";

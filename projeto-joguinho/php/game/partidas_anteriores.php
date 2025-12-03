@@ -25,10 +25,10 @@ try {
 
 // Busca as partidas do jogador logado
 $stmt = $pdo->prepare("
-    SELECT id, pontos, palavras, dificuldade, resultado, criado_em
+    SELECT id, pontos, palavras, dificuldade, resultado, data_jogo
     FROM partidas
     WHERE user_id = ?
-    ORDER BY criado_em DESC
+    ORDER BY data_jogo DESC
 ");
 
 $stmt->execute([$user_id]);
@@ -69,7 +69,7 @@ $partidas = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <td><?= $p['palavras'] ?></td>
                 <td><?= $p['dificuldade'] ?></td>
                 <td><?= $p['resultado'] ?></td>
-                <td><?= date("d/m/Y H:i", strtotime($p['criado_em'])) ?></td>
+                <td><?= date("d/m/Y H:i", strtotime($p['data_jogo'])) ?></td>
             </tr>
             <?php endforeach; ?>
             <?php endif; ?>

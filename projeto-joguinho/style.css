@@ -33,22 +33,31 @@ body.default {
 
 .title {
     font-family: 'Goldman', sans-serif;
-    color: #c9a0ff;
+    color: #f0f0f0;
     font-size: 161px;
     font-weight: 400;
 
     position: absolute;
     left: 120px;
     top: 220px;
+    z-index: 10;
 
     line-height: 1;
-    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6);
+    
+    /* Glow */
+    text-shadow: 
+        0 0 10px #b134ff,
+        0 0 30px #b134ff,
+        0 0 60px #b134ff;
 }
+
+/* Botões laterais ---------------------------------------------- */
 
 .menu-buttons {
     position: absolute;
     top: 250px;
     right: 150px;
+    z-index: 10;
 
     display: flex;
     flex-direction: column;
@@ -57,66 +66,99 @@ body.default {
 
 .button {
     text-decoration: none;
-    background-color: #382A52;
-    color: #E2E2E2;
+    text-align: center;
+    
+    /* Fundo escuro translucido */
+    background: rgba(20, 10, 40, 0.75);
+    color: #ffffff;
+    
     font-size: 40px;
+    font-weight: bold;
     padding: 25px 60px;
     border-radius: 30px;
 
-    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.6);
+    border: 3px solid #b134ff;
+    box-shadow: 
+        0 0 15px #b134ff, 
+        inset 0 0 15px rgba(177, 52, 255, 0.3);
+
+    text-shadow: 0 0 8px #b134ff;
     transition: 0.3s;
 }
 
 .button:hover {
     transform: scale(1.05);
-    background: rgba(80, 70, 120, 0.9);
+    background: rgba(177, 52, 255, 0.15); 
+    
+    box-shadow: 
+        0 0 30px #b134ff,
+        0 0 50px #b134ff,
+        inset 0 0 25px rgba(177, 52, 255, 0.5);
 }
+
+/* Botão de usuário (Canto superior) ---------------------------- */
 
 .user-button {
     position: absolute;
     top: 30px;
     right: 40px;
+    z-index: 20;
 }
 
 .user-button img {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     cursor: pointer;
+    border-radius: 50%; 
+    
+    border: 2px solid #b134ff;
+    box-shadow: 0 0 15px #b134ff;
     transition: 0.3s;
 }
 
+.user-button img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px #b134ff;
+}
 
-/* ---------------------------------------------------
-   Formulários Todos (login, cadastro, perfil, etc)
---------------------------------------------------- */
-
-/* -----------------------------------------------------
-   LOGIN
------------------------------------------------------ */
 
 /* -----------------------------------------------------
-   LOGIN - Estilo de Formulário
+   LOGIN - todas as telas 
 ----------------------------------------------------- */
 
 .form-page {
     width: 100vw;
     height: 100vh;
-    background: #f7f7f7;
+    background-image: url('img/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     position: relative;
     overflow-y: auto;
-    font-family: "Segoe UI", Arial, sans-serif;
+    font-family: 'Consolas', 'Courier New', monospace; /* Fonte tech/mono */
+    color: #FFFFFF;
 }
 
-/* Formas decorativas */
+/* Efeito de Brilho Neon (Shadow Glow) */
+.neon-glow-primary {
+    text-shadow: 0 0 5px #A98BD4, 0 0 10px #A98BD4, 0 0 20px #8e6ac6;
+}
+
+.neon-glow-secondary {
+    box-shadow: 0 0 8px #00FFFF, 0 0 15px #00FFFF, 0 0 25px rgba(0, 255, 255, 0.4);
+}
+
+/* Formas translucidas */
 .form-shape-top {
     position: absolute;
     top: 0;
     right: 0;
     width: 70%;
     height: 45%;
-    background: #a98bd4;
+    background: #A98BD4; /* Purple Neon */
     clip-path: polygon(100% 0, 0 0, 100% 100%);
     z-index: -1;
+    opacity: 0.5; 
 }
 
 .form-shape-bottom {
@@ -125,77 +167,125 @@ body.default {
     left: 0;
     width: 80%;
     height: 50%;
-    background: #a98bd4;
+    background: #00FFFF; 
     clip-path: polygon(0 100%, 0 0, 100% 100%);
     z-index: -1;
+    opacity: 0.3;
 }
-
 /* Título */
 .form-title {
     font-family: "Goldman", sans-serif;
     font-size: 65px;
-    color: #8e6ac6;
+    color: #FFFFFF;
     text-align: left;
     margin: 60px 0 0 120px;
+    text-shadow: 0 0 8px #A98BD4, 0 0 15px #A98BD4, 0 0 30px #8e6ac6;
 }
 
-/* Container */
+/* Container e Elementos do Formulário */
 .form-container {
     width: 60%;
     max-width: 750px;
     margin: 40px auto;
-}
-
-/* Grid */
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 30px;
-    margin-top: 40px;
+    background: rgba(10, 10, 30, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    border: 1px solid #A98BD4; 
+    box-shadow: 0 0 10px rgba(169, 139, 212, 0.5);
 }
 
 .form-group label {
     font-size: 22px;
     font-weight: 600;
+    color: #00FFFF; /* Label em Cyan */
+    text-shadow: 0 0 5px #00FFFF;
 }
 
-.form-group input {
-    width: 100%;
-    padding: 12px;
-    font-size: 20px;
-    border: 2px solid black;
-    background: white;
-}
-
-/* Botão */
-.form-button {
-    background: #222;
-    color: white;
-    padding: 18px 60px;
-    font-size: 26px;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
+/* Inputs diretos do formulário */
+form > label {
     display: block;
-    margin: 50px auto 0;
-    transition: 0.3s;
+    margin-bottom: 8px;
+    font-size: 20px;
+    color: #00FFFF; 
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.6);
 }
 
-.form-button:hover {
-    background: #444;
-    transform: scale(1.05);
-}
-
-/* Estilizar inputs diretos do formulário */
 form > input[type="text"],
 form > input[type="email"],
 form > input[type="password"] {
     width: 100%;
     padding: 12px;
     font-size: 20px;
-    border: 2px solid black;
-    background: white;
+    border: 1px solid #A98BD4; 
+    background: rgba(20, 20, 40, 0.9); 
+    color: #FFFFFF;
     margin-bottom: 25px;
+    border-radius: 5px;
+    /* Brilho no input */
+    box-shadow: 0 0 5px rgba(169, 139, 212, 0.5);
+    transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+form > input:focus {
+    outline: none;
+    border-color: #00FFFF; 
+    box-shadow: 0 0 10px #00FFFF; 
+}
+
+/* Botão - entrar */
+.form-button {
+    background: #A98BD4; 
+    color: #08081A;
+    padding: 18px 60px;
+    font-size: 26px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    display: block;
+    margin: 50px auto 20px;
+    transition: 0.3s;
+    /* Brilho do botão */
+    box-shadow: 0 0 10px #A98BD4, 0 0 20px rgba(169, 139, 212, 0.7);
+}
+
+.form-button:hover {
+    background: #00FFFF; 
+    color: #08081A;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px #00FFFF, 0 0 25px rgba(0, 255, 255, 0.8);
+}
+
+/* Botão - criar conta */
+.form-back {
+    background: transparent;
+    color: #FFFFFF;
+    padding: 10px 30px;
+    font-size: 18px;
+    border: 2px solid #00FFFF; 
+    border-radius: 10px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto 0;
+    transition: 0.3s;
+    box-shadow: 0 0 5px #00FFFF;
+}
+
+.form-back:hover {
+    background: rgba(0, 255, 255, 0.1); 
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #00FFFF;
+}
+
+/* Mensagem de erro */
+.form-error {
+    color: #ffd0d0; 
+    background: rgba(255, 0, 0, 0.15);
+    border: 1px solid #FF0000;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-shadow: none;
 }
 
 
@@ -203,9 +293,7 @@ form > input[type="password"] {
    GAME
 --------------------------------------------------- */
 
-
-
-  /*Menu flutuante ----------------------------------------------------*/
+  /*Menu flutuante --------------------------------- */
 
 
 /* background */
@@ -273,7 +361,7 @@ form > input[type="password"] {
 /*fim do menu flutuante*/
 }
 
-/*JOGO ----------------------------------------------------------------*/
+/*JOGO ---------------------------------------------- */
 
 /* HUD (placar) */
 .hud {
@@ -306,7 +394,7 @@ form > input[type="password"] {
 /* Container onde o texto vai subir */
 .container-texto {
     width: 800px;
-    max-width: 90vw; /* diminui em telas pequenas */
+    max-width: 90vw; 
     height: 500px;
     max-height: 60vh;
 
@@ -327,15 +415,14 @@ form > input[type="password"] {
 }
 
 .texto-box {
-    position: absolute; /* permite animar a subida */
+    position: absolute; 
     top: 0;
     left: 0;
     width: 100%;
     font-size: 24px;
     line-height: 1.25;
     padding: 20px;
-    white-space: pre-wrap; /* mantém as quebras de linha */
-
+    white-space: pre-wrap; 
     padding: 20;
     margin: 0;
 }
@@ -344,7 +431,7 @@ form > input[type="password"] {
 /* Texto interno do teleprompter */
 #texto, #digitado {
     position: absolute;
-    top: 100%; /* Começa fora do container */
+    top: 100%; 
     left: 0;
 }
 
@@ -361,17 +448,16 @@ form > input[type="password"] {
     white-space: pre-wrap;
 }
 
-/* Quebra de linha real */
+/* Quebra de linha */
 #texto span.newline {
     display: block;
     height: 1.25em;
 }
 
-/* Pinturas corretas */
-#texto span.correto { color: #2895f3; }   /* roxo */
-#texto span.errado  { color: #ff4444; }   /* vermelho */
+#texto span.correto { color: #2895f3; }   
+#texto span.errado  { color: #ff4444; }   
 
-/* O DIGITADO FOI REMOVIDO DA LÓGICA (não é mais usado) */
+
 #digitado { display: none !important; }
 
 /* overlay do digitado — spans inline-block para medição */
@@ -387,20 +473,20 @@ form > input[type="password"] {
     line-height: 1.25;
 }
 
-/* cores da lógica antiga: colorimos o digitado */
-#digitado span.correto { color: #2895f3; } /* roxo */
-#digitado span.errado  { color: #ff4444; } /* vermelho */
+
+#digitado span.correto { color: #2895f3; } 
+#digitado span.errado  { color: #ff4444; }
 
 /* placeholders (quando não digitou) invisíveis */
 #digitado :not(span) { color: transparent; }
 
-/* Hud - combo multiplicador ----------------------------------------- */
+/* Hud - combo multiplicador -------------------------- */
 
 #combo-hud {
     position: absolute;
-    left: 18vw;              /* distância lateral dentro do container */
-    top: 15vw;                /* centraliza verticalmente no container */
-    transform: translateY(-50%) rotate(-20deg);  /* leve inclinação */
+    left: 18vw;              
+    top: 15vw;               
+    transform: translateY(-50%) rotate(-20deg);  
     text-align: center;
     pointer-events: none;
     opacity: 0;
@@ -442,7 +528,7 @@ form > input[type="password"] {
 }
 
 
-/* Game over --------------------------------------------------------- */
+/* Game over -------------------------------------------- */
 .gameover-overlay {
     position: fixed;
     top: 0;
@@ -514,9 +600,9 @@ form > input[type="password"] {
 }
 
 
-/* ---------------------------------------------------
+/* ---------------------------------------------------------
    Partidas anteriores
---------------------------------------------------- */
+------------------------------------------------------------ */ 
 
 
 .jogos-anteriores {
@@ -579,7 +665,7 @@ form > input[type="password"] {
     background: rgba(100, 0, 160, 0.28);
 }
 
-/* Hover com neon */
+
 .jogos-anteriores tbody tr:hover td {
     background: rgba(150, 0, 255, 0.32);
     transition: 0.2s;
@@ -591,4 +677,58 @@ form > input[type="password"] {
     padding: 20px;
     color: #d0b6ff;
     font-style: italic;
+}
+
+.jogos-anteriores button {
+    display: block;
+    margin: 40px auto 0; /* Centraliza horizontalmente e dá espaço do topo */
+    cursor: pointer;
+    text-decoration: none;
+
+    /* Fonte e Texto */
+    font-family: inherit; /* Mantém a fonte da página (Segoe/Roboto) */
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ffffff;
+
+    /* Tamanho e Forma */
+    padding: 15px 50px;
+    border-radius: 50px; /* Borda bem redonda (estilo pílula) */
+
+    /* Cores e Bordas Neon */
+    background: rgba(20, 10, 40, 0.8); /* Fundo escuro para contraste */
+    border: 2px solid #b134ff; /* A borda roxa neon principal */
+
+    /* Efeitos de Brilho (Glow) - Estado Normal */
+    box-shadow: 
+        0 0 15px #b134ff, 
+        inset 0 0 10px rgba(177, 52, 255, 0.2); /* Brilho interno sutil */
+    
+    text-shadow: 0 0 8px #b134ff;
+
+    transition: all 0.3s ease-in-out;
+}
+
+/* Efeito Hover (Ao passar o mouse) */
+.jogos-anteriores button:hover {
+    transform: scale(1.05); /* Aumenta levemente */
+    background: rgba(177, 52, 255, 0.15); /* O fundo acende levemente em roxo */
+    
+    /* Glow Intenso */
+    box-shadow: 
+        0 0 25px #b134ff,
+        0 0 50px #b134ff,
+        inset 0 0 20px rgba(177, 52, 255, 0.4);
+        
+    text-shadow: 
+        0 0 10px #ffffff, 
+        0 0 20px #b134ff;
+}
+
+/* Efeito Click (Active) */
+.jogos-anteriores button:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 10px #b134ff;
 }
