@@ -1,10 +1,7 @@
 # joguinho-digitação
 
-## 
 
 
-
-Primeiro foram feitas as páginas base do sistema, index.php, parte do login e usuário.
 
 # Nome do Sistema
 
